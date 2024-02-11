@@ -1,0 +1,75 @@
+
+nakopci fily z mdn ako podla
+
+https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/skeleton_website
+
+www file
+
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+ 
+ npm i mongoose ejs
+ 
+ npm i marked
+ 
+ npm install slugify
+ 
+ npm install dompurify
+ 
+ npm install jsdom
+ 
+ npm install method-override
+ 
+ and workx
+ 
+ 
+ 
+ rest is from nother app, review and possibly deletee
+ 
+ npm i --save-dev nodemon
+
+const app = require("../app");
+
+premenoval si app na app_old (aby si vytestoval server)
+,
+ale www/bin si to vsimol a presmeroval sa tam
+
+a potom si tam dal zo server.js od wds toto
+
+const express = require('express')
+const app = express()
+
+a exportol si a ide ti server v app_old kokot
+
+module.exports = app; nezbudni!
+
+
+skus pridat wds 
+
+a nezabudni mat nainstalovane ejs a picoviny a uz sleduj wds video
+
+a ncrypt nainstalluj
+
+npm i bcrypt
+
+neskor
+
+npm i passport passport-local express-session express-flash
+
+npm i method-override
+
+
+zober package.json z mdn miesto npm init
+
+npm i
+
+express (uz mas)
+
+ejs
+
+npm i --save-dev nodemon dotenv
+
+potom package.json, on to spusti cez server.js!!!

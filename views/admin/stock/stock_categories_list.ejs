@@ -1,0 +1,46 @@
+<!-- views/admin/stock/index.ejs -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stock Management</title>
+</head>
+<body>
+  <h1>Stock Management</h1>
+
+  <h2>Gun Categories</h2>
+  <ul>
+    <% gunscategories.forEach(function(category) { %>
+      <li>
+        <%= category.category %>
+        <%= category.description %>
+          <img src="/../../pics/<%= category.image %>" style="width: 100px; height: auto;" alt="<%= category.category %>">
+          <!--
+          <a href="/admin/stock/category/guns/<%= category._id %>/products">View Products</a>-->
+          <a href="/admin/stock/products?categoryType=guns&categoryId=<%= category._id %>">View Products</a>
+        <a href="/admin/stock/category/<%= category._id %>/edit?categoryType=guns">Edit</a>
+        <a href="/admin/stock/category/<%= category._id %>/delete?categoryType=guns">Delete</a>
+      </li>
+    <% }); %>
+    <li><a href="/admin/stock/category/create">Add New Gun Category</a></li>
+  </ul>
+
+  <h2>Rifle Categories</h2>
+  <ul>
+    <% riflescategories.forEach(function(category) { %>
+      <li>
+        <%= category.category %>
+        <%= category.category %>
+        <%= category.description %>
+          <img src="/../../pics/<%= category.image %>" style="width: 100px; height: auto;" alt="<%= category.category %>">
+          <!--
+        <a href="/admin/stock/category/rifles/<%= category._id %>/products">View Products</a>-->
+        <a href="/admin/stock/products?categoryType=rifles&categoryId=<%= category._id %>">View Products</a>
+        <a href="/admin/stock/category/<%= category._id %>/edit?categoryType=rifles">Edit</a>
+        <a href="/admin/stock/category/<%= category._id %>/delete?categoryType=rifles">Delete</a>
+      </li>
+    <% }); %>
+    <li><a href="/admin/stock/category/create">Add New Rifle Category</a></li>
+  </ul>
+</body>
+</html>

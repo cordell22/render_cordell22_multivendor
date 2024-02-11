@@ -1,0 +1,30 @@
+<!-- views/cart/guncategory_detail.ejs -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gun Category Detail</title>
+</head>
+<body>
+  <h1>Gun Category Detail</h1>
+
+  <table>
+    <tr>
+      <th>Category:</th>
+      <td><%= gunscategory.category %></td>
+    </tr>
+    <tr>
+      <th>Description:</th>
+      <td><%= gunscategory.description %></td>
+    </tr>
+    <tr>
+      <th>Image:</th>
+      <td><img src="/pics/<%= gunscategory.image %>" style="width: 200px; height: auto;" alt="<%= gunscategory.category %>"></td>
+    </tr>
+  </table>
+
+  <a href="/cart/guncategory/<%= gunscategory._id %>/update">Edit</a>
+  <a href="/cart/guncategory/<%= gunscategory._id %>/delete">Delete</a>
+  <a href="/cart/gunscategories">Back to List</a>
+</body>
+</html>

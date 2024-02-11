@@ -1,0 +1,47 @@
+
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Blog</title>
+</head>
+
+<body>
+
+	<div class="container">
+		<h1 class="mb-4">Blog Articles</h1>
+		<a href="/articles/new" class="btn btn-success">New Article</a>
+		
+		<% articles.forEach(article => { %>
+			<div class="card mt-4">
+				<div class="card-body">
+					<h4 class="crd-title"><%= article.title %></h4>
+					<div class="card-subtitle text-muted mb-2">
+						<%= article.createdAt.toLocaleDateString() %>
+					</div>
+					<div class="card-text mb-2"><%= article.description %></div>
+					<a href="articles/<%= article.slug %>" class="btn btn-primary">Read More</a>
+					<a href="articles/edit/<%= article.id %>" class="btn btn-info">Edit</a>
+					<form action="/articles/<%= article.id %>?_method=DELETE" method="POST" class="d-inline">
+						<button type="submit" class="btn btn-danger">Delete</button>
+					</form>
+				</div>
+				
+			</div>
+		<% }) %>
+	</div>
+</body>
+	<!--
+	This is Sparta
+	Text here <%= articles %>-->
+</html>
+

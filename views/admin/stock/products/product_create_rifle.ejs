@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add New Rifle Product</title>
+</head>
+<body>
+  <h1>Add New Rifle Product</h1>
+
+  <form action="/admin/stock/products/create?categoryType=<%= categoryType %>&categoryId=<%= categoryId %>" method="post" enctype="multipart/form-data">
+    <!-- Common fields -->
+    <!-- ... -->
+    
+    <!-- Rifle-specific fields -->
+    <label for="name">Name:</label>
+    <input type="text" name="name"><br>
+
+    <label for="description">Description:</label>
+    <textarea name="description"></textarea><br>
+
+    <label for="image">Image:</label>
+    <input type="file" name="image" accept="image/*" required><br>
+
+    <label for="price">Price:</label>
+    <input type="number" name="price"><br>
+
+    <label for="stock">Stock:</label>
+    <input type="number" name="stock"><br>
+
+    <button type="submit">Create Product</button>
+  </form>
+
+  <a href="/admin/stock/products?categoryType=<%= categoryType %>&categoryId=<%= categoryId %>">Back to Products List</a>
+</body>
+</html>

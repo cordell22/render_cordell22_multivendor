@@ -1,0 +1,24 @@
+<!-- views/cart/guncategory_edit.ejs -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Gun Category</title>
+</head>
+<body>
+  <h1>Edit Gun Category</h1>
+  
+  <form method="POST" action="/cart/guncategory/<%= gunscategory._id %>/update">
+    <div>
+      <label for="category">Category:</label>
+      <input type="text" id="category" name="category" value="<%= gunscategory.category %>" required>
+    </div>
+    <div>
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" required><%= gunscategory.description %></textarea>
+    </div>
+    <input type="submit" value="Save">
+    <a href="/cart/gunscategories">Cancel</a>
+  </form>
+</body>
+</html>

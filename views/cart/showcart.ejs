@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cart</title>
+</head>
+<body>
+  <h1>Your Cart</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Product Type</th>
+      <th>Product ID</th>
+      <th>Quantity</th>
+      <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% cartItems.forEach(item => { %>
+        <tr>
+          <td><%= item.product_type %></td>
+        <td><%= item.product_name  %></td>
+        <td><%= item.quantity %></td>
+
+        <td>
+          <form action="/cart/increase" method="post">
+            <input type="hidden" name="cartItemId" value="<%= item._id %>">
+            <button type="submit">+</button>
+          </form>
+          <form action="/cart/decrease" method="post">
+            <input type="hidden" name="cartItemId" value="<%= item._id %>">
+            <button type="submit">-</button>
+          </form>
+        </td>
+        <!--
+          <td>
+            <input
+              type="number"
+              value="<%= item.quantity %>"
+              data-cartItemId="<%= item._id %>"
+              class="quantity-input"
+            />
+          </td>
+          <td><%= item.price %></td>
+          <td class="item-total"></td>
+        -->
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  <p>Total Cart Value: <%= cartTotal %></p>
+
+  <a href="/shop">Continue Shopping</a>
+  <a href="/checkout/checkout">Checkout</a>
+
+  <!-- Inside your views/cart/cart.ejs -->
+
+<!-- ... previous HTML content ... -->
+
+<script>
+  /*
+  const quantityInputs = document.querySelectorAll('.quantity-input');
+  const itemTotalElements = document.querySelectorAll('.item-total');
+  const cartTotalElement = document.querySelector('#cart-total');
+
+  quantityInputs.forEach(input => {
+    input.addEventListener('change', async event => {
+      const cartItemId = event.target.dataset.cartitemid;
+      const newQuantity = parseInt(event.target.value);
+
+      const response = await fetch('/cart/update', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ cartItemId, newQuantity }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        const itemTotalElement = itemTotalElements.find(element =>
+          element.dataset.cartitemid === cartItemId
+        );
+
+        if (itemTotalElement) {
+          itemTotalElement.textContent = data.newTotal.toFixed(2);
+          updateCartTotal();
+        }
+      }
+    });
+  });
+
+  function updateCartTotal() {
+    let cartTotal = 0;
+    itemTotalElements.forEach(itemTotalElement => {
+      cartTotal += parseFloat(itemTotalElement.textContent);
+    });
+    cartTotalElement.textContent = cartTotal.toFixed(2);
+  }
+
+  updateCartTotal(); // Initial update
+  */
+</script>
+</body>
+</html>

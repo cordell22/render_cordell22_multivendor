@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Delete Stock Category</title>
+</head>
+<body>
+  <h1>Delete Stock Category</h1>
+  <p>Are you sure you want to delete this stock category?</p>
+  <form method="POST" action="/admin/stock/category/<%= categoryId %>/delete?categoryType=<%= categoryType %>">
+    <button type="submit">Delete</button>
+    <a href="/admin/stock">Cancel</a>
+  </form>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Delete Gun Category</title>
+</head>
+<body>
+  <h1>Delete Gun Category</h1>
+  <p>Are you sure you want to delete the following gun category?</p>
+  
+  <p><strong>Category:</strong> <%= gunscategory.category %></p>
+  <p><strong>Description:</strong> <%= gunscategory.description %></p>
+  
+  <form method="POST" action="/cart/guncategory/<%= gunscategory._id %>/delete">
+    <input type="submit" value="Delete">
+    <a href="/cart/gunscategories">Cancel</a>
+  </form>
+</body>
+</html>

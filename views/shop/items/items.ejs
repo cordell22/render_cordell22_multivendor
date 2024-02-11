@@ -1,0 +1,70 @@
+<!-- views/shop/items/items.ejs -->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Items List</title>
+</head>
+<body>
+
+  <h1>Buy some items</h1>
+
+  
+  <!-- Link to view the cart -->
+  <p><a href="/cart">View Cart</a></p>
+
+  <h2>Category Type: <%= categoryType %></h2>
+  <h2>Category: <%= categoryName %></h2>
+
+  <% if (products.length > 0) { %>
+    <ul>
+      <% products.forEach(function(product) { %>
+        <li>
+          Product Name: <%= product.name %><br>
+          Price: <%= product.price %><br>
+          
+          <!-- Display product image with a width of 100px -->
+          <img src="/../../pics/<%= product.image %>" style="width: 100px;" alt="<%= product.name %>"><br>
+          <a href="#" class="add-to-cart-link" data-productid="<%= product._id %>">Add to cart</a>
+        </li>
+      <% }); %>
+    </ul>
+  <% } else { %>
+    <p>No products available for this category.</p>
+  <% } %>
+  
+  <script>
+    const addToCartLinks = document.querySelectorAll('.add-to-cart-link');
+  
+    addToCartLinks.forEach(link => {
+      link.addEventListener('click', async event => {
+        event.preventDefault();
+  
+        const productID = event.target.dataset.productid;
+        const categoryType = '<%= categoryType %>'; // Retrieve categoryType from EJS
+
+        try {
+        const response = await fetch('/cart/add', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ product_id: productID, product_type: categoryType, quantity: 1 }), // Adjust the data you want to send
+        });
+  
+        if (response.ok) {
+          // Handle success (e.g., show a notification)
+        } else {
+          // Handle error (e.g., show an error message)
+        }
+      }catch (error) {
+          console.error('Error:', error);
+        }
+    });
+    });
+  </script>
+
+</body>
+</html>

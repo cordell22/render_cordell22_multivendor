@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Delete Rifle Product</title>
+</head>
+<body>
+  <h1>Delete Rifle Product</h1>
+
+  <p>Are you sure you want to delete this rifle product?</p>
+
+  <form action="/admin/stock/products/<%= productId %>/delete" method="post">
+    <button type="submit">Delete</button>
+    <a href="/admin/stock/products?categoryType=<%= categoryType %>&categoryId=<%= categoryId %>">Cancel</a>
+  </form>
+</body>
+</html>

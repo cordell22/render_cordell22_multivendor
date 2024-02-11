@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+</head>
+<body>
+  <h1><%= title %></h1>
+  <% if (error) { %>
+    <p class="error"><%= error %></p>
+  <% } %>
+  <form method="POST" enctype="multipart/form-data" action="/admin/stock/category/create">
+    <label for="category">Category:</label>
+    <input type="text" id="category" name="category" required>
+    <br>
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description" required>
+    <br>
+    <label for="categoryType">Category Type:</label>
+    <select id="categoryType" name="categoryType">
+      <option value="guns">Guns</option>
+      <option value="rifles">Rifles</option>
+    </select>
+    <br>
+    <label for="image">Image:</label>
+    <input type="file" name="image" accept="image/*" required>
+    <br>
+    <button type="submit">Create</button>
+  </form>
+  <a href="/admin/stock">Back to Stock</a>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Shop Landing Page</title>
+</head>
+<body>
+    <h1>Welcome to Our E-Shop going  MULTIVENDOOOR!!!</h1>
+    <h2>Categories:</h2>
+    
+    <h2>Gun Categories</h2>
+    <ul>
+      <% gunCategories.forEach(function(category) { %>
+        <li>
+          <%= category.category %>
+          <%= category.description %>
+            <img src="/../../pics/<%= category.image %>" style="width: 100px; height: auto;" alt="<%= category.category %>">
+            <!--
+            <a href="/admin/stock/category/guns/<%= category._id %>/products">View Products</a>-->
+            <a href="/shop/items?categoryType=guns&categoryId=<%= category._id %>">View Items</a>
+
+        </li>
+      <% }); %>
+      
+    </ul>
+  
+    <h2>Rifle Categories</h2>
+    <ul>
+      <% rifleCategories.forEach(function(category) { %>
+        <li>
+          <%= category.category %>
+          <%= category.category %>
+          <%= category.description %>
+            <img src="/../../pics/<%= category.image %>" style="width: 100px; height: auto;" alt="<%= category.category %>">
+            <!--
+          <a href="/admin/stock/category/rifles/<%= category._id %>/products">View Products</a>-->
+          <a href="/shop/items?categoryType=rifles&categoryId=<%= category._id %>">View Products</a>
+          
+        </li>
+      <% }); %>
+      
+    </ul>
+
+    <br>
+    <br>
+    <br>
+
+
+
+
+    <ul>
+        <% gunCategories.forEach(category => { %>
+            <li>
+                <a href="/categories/guns/<%= category.slug %>">
+                    <img src="<%= category.image %>" alt="<%= category.name %> Image" width="100" height="100">
+                    <%= category.name %>
+                </a>
+            </li>
+        <% }); %>
+        <% rifleCategories.forEach(category => { %>
+            <li>
+                <a href="/categories/rifles/<%= category.slug %>">
+                    <img src="<%= category.image %>" alt="<%= category.name %> Image" width="100" height="100">
+                    <%= category.name %>
+                </a>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>

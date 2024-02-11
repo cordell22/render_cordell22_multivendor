@@ -1,0 +1,216 @@
+
+
+
+const mongoose = require('mongoose');
+
+const Schema = mongoose.Schema;
+
+const CartSchema = new Schema(
+  {
+    quantity: { type: Number, required: true },
+    user_session_id: { type: String, required: true },
+    product_type: { type: String, enum: ['coffee', 'other'], required: true },
+    product_id: { type: Number, required: true },
+    date_created: { type: Date, default: Date.now, required: true },
+    date_modified: { type: Date, default: Date.now, required: true },
+  }
+);
+
+
+module.exports = mongoose.model('Cart', CartSchema);
+
+
+const mongoose = require('mongoose');
+
+const Schema = mongoose.Schema;
+
+const CustomerSchema = new Schema(
+  {
+    email: { type: String, required: true },
+    first_name: { type: String, required: true },
+    last_name: { type: String, required: true },
+    address1: { type: String, required: true },
+    address2: String,
+    city: { type: String, required: true },
+    state: { type: String, required: true },
+    zip: { type: Number, required: true },
+    phone: { type: Number, required: true },
+    date_created: { type: Date, default: Date.now, required: true },
+  }
+);
+
+module.exports = mongoose.model('Customer', CustomerSchema);
+
+
+const mongoose = require('mongoose');
+
+const Schema = mongoose.Schema;
+
+const GunSchema = new Schema(
+  {
+    guns_categories_id: { type: Schema.Types.ObjectId, ref: 'GunsCategory', required: true },
+    size_id: { type: Schema.Types.ObjectId, required: true },
+    hand_sub: String,
+    pist_revolv: String,
+    price: { type: Number, required: true },
+    stock: { type: Number, default: 0 },
+    date_created: { type: Date, default: Date.now, required: true },
+  }
+);
+
+module.exports = mongoose.model('Gun', GunSchema);
+
+
+const mongoose = require('mongoose');
+
+const Schema = mongoose.Schema;
+
+const GunsCategorySchema = new Schema(
+  {
+    category: { type: String, required: true },
+    description: String,
+    image: { type: String, required: true },
+  }
+);
+
+module.exports = mongoose.model('GunsCategory', GunsCategorySchema);
+
+
+const mongoose = require('mongoose');
+
+const Schema = mongoose.Schema;
+
+const OrderContentSchema = new Schema(
+  {
+    order_id: { type: Schema.Types.ObjectId, ref: 'Order', required: true },
+    product_type: { type: String, enum: ['coffee', 'other'] },
+    product_id: { type: Schema.Types.ObjectId, required: true },
+    quantity: { type: Number, required: true },
+    price_per: Number,
+    ship_date: Date,
+  }
+);
+
+module.exports = mongoose.model('OrderContent', OrderContentSchema);
+
+
+const mongoose = require('mongoose');
+
+const Schema = mongoose.Schema;
+
+const OrderSchema = new Schema(
+  {
+    customer_id: { type: Schema.Types.ObjectId, ref: 'Customer', required: true },
+    total: Number,
+    shipping: Number,
+    credit_card_number: Number,
+    order_date: { type: Date, default: Date.now, required: true },
+  }
+);
+
+module.exports = mongoose.model('Order', OrderSchema);
+
+
+const mongoose = require('mongoose');
+
+const Schema = mongoose.Schema;
+
+const RifleSchema = new Schema(
+  {
+    riffles_category_id: { type: Schema.Types.ObjectId, ref: 'RiflesCategory', required: true },
+    name: { type: String, required: true },
+    description: String,
+    image: { type: String, required: true },
+    price: { type: Number, required: true },
+    stock: { type: Number, default: 0 },
+    date_created: { type: Date, default: Date.now, required: true },
+  }
+);
+
+module.exports = mongoose.model('Rifle', RifleSchema);
+
+
+const mongoose = require('mongoose');
+
+const Schema = mongoose.Schema;
+
+const RiflesCategorySchema = new Schema(
+  {
+    category: { type: String, required: true },
+    description: { type: String, required: true },
+    image: { type: String, required: true },
+  }
+);
+
+module.exports = mongoose.model('RiflesCategory', RiflesCategorySchema);
+
+
+const mongoose = require('mongoose');
+
+const Schema = mongoose.Schema;
+
+const SaleSchema = new Schema(
+  {
+    product_type: { type: String, enum: ['guns', 'riffles'] },
+    product_id: { type: Schema.Types.ObjectId, required: true },
+    price: { type: Number, required: true },
+    start_date: { type: Date, required: true },
+    end_date: Date,
+  }
+);
+
+module.exports = mongoose.model('Sale', SaleSchema);
+
+
+const mongoose = require('mongoose');
+
+const Schema = mongoose.Schema;
+
+const SizeSchema = new Schema(
+  {
+    size: { type: String, required: true },
+  }
+);
+
+module.exports = mongoose.model('Size', SizeSchema);
+
+
+
+const mongoose = require('mongoose');
+
+const Schema = mongoose.Schema;
+
+const TransactionSchema = new Schema(
+  {
+    order_id: { type: Schema.Types.ObjectId, ref: 'Order', required: true },
+    type: { type: String, required: true },
+    amount: { type: Number, required: true },
+    response_code: Number,
+    response_reason: String,
+    transaction_id: Number,
+    response: String,
+    date_created: { type: Date, default: Date.now, required: true },
+  }
+);
+
+module.exports = mongoose.model('Transaction', TransactionSchema);
+
+
+const mongoose = require('mongoose');
+
+const Schema = mongoose.Schema;
+
+const WishListSchema = new Schema(
+  {
+    quantity: { type: Number, required: true },
+    user_session_id: { type: String, required: true },
+    product_type: { type: String, enum: ['coffee', 'other'] },
+    product_id: { type: Schema.Types.ObjectId, required: true },
+    date_created: { type: Date, default: Date.now, required: true },
+    date_modified: { type: Date, default: Date.now, required: true },
+  }
+);
+
+module.exports = mongoose.model('WishList', WishListSchema);
+
+

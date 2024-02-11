@@ -1,0 +1,35 @@
+<!-- views/admin/stock/products/products_list.ejs -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Products List</title>
+</head>
+<body>
+  <h1>Products List</h1>
+
+  <h2>Category Type: <%= categoryType %></h2>
+  <h2>Category: <%= categoryName %></h2>
+
+  <% if (products.length > 0) { %>
+    <ul>
+      <% products.forEach(function(product) { %>
+        <li>
+          Product Name: <%= product.name %><br>
+          Price: <%= product.price %><br>
+          Stock: <%= product.stock %><br>
+          <!-- Display product image with a width of 200px -->
+          <img src="/../../pics/<%= product.image %>" style="width: 200px;" alt="<%= product.name %>"><br>
+          <a href="/admin/stock/products/<%= product._id %>/edit?categoryType=<%= categoryType %>&categoryId=<%= categoryId %>">Edit</a>
+          <a href="/admin/stock/products/<%= product._id %>/delete?categoryType=<%= categoryType %>&categoryId=<%= categoryId %>">Delete</a>
+          <a href="/admin/stock/products/view?categoryType=<%= categoryType %>&categoryId=<%= categoryId %>">View Details</a>
+        </li>
+      <% }); %>
+    </ul>
+  <% } else { %>
+    <p>No products available for this category.</p>
+  <% } %>
+
+  <a href="/admin/stock/products/create?categoryType=<%= categoryType %>&categoryId=<%= categoryId %>">Add New Product</a>
+</body>
+</html>

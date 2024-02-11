@@ -1,0 +1,35 @@
+<!-- views/cart/guncategory_create.ejs -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add New Gun Category</title>
+</head>
+<body>
+  <h1>Add New Gun Category</h1>
+
+  <% if (error) { %>
+    <p style="color: red;"><%= error %></p>
+  <% } %>
+
+  <form action="/cart/guncategory/create" method="post" enctype="multipart/form-data">
+    <div>
+      <label for="category">Category:</label>
+      <input type="text" name="category" required>
+    </div>
+    <div>
+      <label for="description">Description:</label>
+      <textarea name="description" rows="3"></textarea>
+    </div>
+    <div>
+      <label for="image">Image:</label>
+      <input type="file" name="image" accept="image/*" required>
+    </div>
+    <div>
+      <button type="submit">Add Category</button>
+    </div>
+  </form>
+
+  <a href="/cart/gunscategories">Back to Gun Categories List</a>
+</body>
+</html>

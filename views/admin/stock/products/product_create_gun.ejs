@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add New Product</title>
+</head>
+<body>
+  <h1>Add New Product</h1>
+
+  <form action="/admin/stock/products/create?categoryType=<%= categoryType %>&categoryId=<%= categoryId %>" method="post" enctype="multipart/form-data">
+    <label for="name">Product Name:</label>
+    <input type="text" name="name" required><br>
+
+    <label for="hand_sub">Hand Sub:</label>
+    <input type="text" name="hand_sub"><br>
+
+    <label for="pist_revolv">Pist Revolv:</label>
+    <input type="text" name="pist_revolv"><br>
+
+    <label for="price">Price:</label>
+    <input type="number" name="price" step="0.01" required><br>
+
+    <label for="stock">Stock:</label>
+    <input type="number" name="stock"><br>
+
+    <label for="image">Image:</label>
+    <input type="file" name="image" accept="image/*" required><br>
+
+    <input type="submit" value="Add Product">
+  </form>
+
+  <a href="/admin/stock/products?categoryType=<%= categoryType %>&categoryId=<%= categoryId %>">Back to Products List</a>
+</body>
+</html>

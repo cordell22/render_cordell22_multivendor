@@ -1,0 +1,56 @@
+
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Blog</title>
+</head>
+
+<body>
+
+	Hello in Views <%= cart %> ma niggaz
+
+	<h1>Cart Contents</h1>
+  <ul>
+    <% for (const item of cart) { %>
+      <li><%= item.id %> - <%= item.name %></li>
+	  <button onclick="addToCart('<%= item.id %>')">Add to Cart</button>
+    <% } %>
+  </ul>
+
+  <script>
+	function addToCart(itemId) {
+	  // Create a form element
+	  const form = document.createElement('form');
+	  form.method = 'POST';
+	  form.action = '/cart/addtocart'; // Route in routes/cart.js to handle the request
+  
+	  // Create an input element to hold the itemId
+	  const input = document.createElement('input');
+	  input.type = 'hidden';
+	  input.name = 'itemId';
+	  input.value = itemId;
+  
+	  // Append the input to the form
+	  form.appendChild(input);
+  
+	  // Append the form to the body and submit it
+	  document.body.appendChild(form);
+	  form.submit();
+	}
+  </script>
+
+	
+</body>
+
+</html>
+

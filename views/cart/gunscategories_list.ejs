@@ -1,0 +1,38 @@
+<!-- views/gunscategories_list.ejs -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gun Categories List</title>
+</head>
+<body>
+  <h1>Gun Categories List</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% gunscategories_list.forEach(function(gunscategory) { %>
+        <tr>
+          <td><%= gunscategory.category %></td>
+          <td><%= gunscategory.description %></td>
+          <td><img src="/../../pics/<%= gunscategory.image %>" style="width: 100px; height: auto;" alt="<%= gunscategory.category %>"></td>
+          <td>
+            <a href="/cart/guncategory/<%= gunscategory._id %>">View</a>
+            <a href="/cart/guncategory/<%= gunscategory._id %>/update">Edit</a>
+            <a href="/cart/guncategory/<%= gunscategory._id %>/delete">Delete</a>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+
+  <a href="/cart/guncategory/create">Add New Gun Category</a>
+</body>
+</html>

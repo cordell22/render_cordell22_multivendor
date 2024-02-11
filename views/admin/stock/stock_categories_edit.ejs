@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Stock Category</title>
+</head>
+<body>
+  <h1>Edit Stock Category</h1>
+  <form method="POST" enctype="multipart/form-data" action="/admin/stock/category/<%= categoryId %>/edit?categoryType=<%= categoryType %>">
+    <label for="category">Category:</label>
+    <input type="text" id="category" name="category" value="<%= category.category %>" required>
+    <br>
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description" value="<%= category.description %>" required>
+    <br>
+    <label for="image">Image:</label>
+    <input type="file" name="image" accept="image/*">
+    <br>
+    <button type="submit">Update</button>
+  </form>
+  <a href="/admin/stock">Cancel</a>
+</body>
+</html>
