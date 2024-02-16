@@ -1,0 +1,29 @@
+
+
+
+Username
+
+cordelfenevall
+
+Password
+
+dopici123
+
+
+
+
+3. Add your connection string into your application code
+
+
+mongodb+srv://cordelfenevall:<password>@cluster0.suivtde.mongodb.net/?retryWrites=true&w=majority
+
+
+
+
+
+mdn este radi aj ze:
+
+Insert the database name "local_library" in the path before the options (...mongodb.net/local_library?retryWrites...)
+
+
+

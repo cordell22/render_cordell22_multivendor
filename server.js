@@ -45,9 +45,19 @@ const Wishlist = require('./models/wishlist')
 
 const  mongoose = require('mongoose');
 //	this is node_eshop_arms db
-const  mongoDB = 'mongodb+srv://cordelfenevall:dopici123@cluster0.dznhd8i.mongodb.net/?retryWrites=true&w=majority';
+//	const  mongoDB = 'mongodb+srv://cordelfenevall:dopici123@cluster0.dznhd8i.mongodb.net/?retryWrites=true&w=majority';
 
-mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
+//	this is render_cordell22_multivendor db
+const  mongoDB = 'mongodb+srv://cordelfenevall:dopici123@cluster0.suivtde.mongodb.net/?retryWrites=true&w=majority';
+
+mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true})
+.then(() => {
+    console.log('Connected to MongoDB Atlas');
+  })
+  .catch((error) => {
+    console.error('Error connecting to MongoDB Atlas:', error);
+  });
+
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
@@ -86,27 +96,21 @@ app.use('/', (req, res) => {
 
 
 // Landing Page
+//	Reading the multivendor now!!!
 const indexRouter = require('./routes/index');
 app.use('/', indexRouter);
-
 // Product Categories
 const browseRouter = require('./routes/browse');
 app.use('/browse', browseRouter);
-
 // Cart
 const cartRouter = require('./routes/cart');
 app.use('/cart', cartRouter);
-
-
-
 // Admin
 const adminRouter = require('./routes/admin');
 app.use('/admin', adminRouter);
-
 // shop
 const shopRouter = require('./routes/shop');
 app.use('/shop', shopRouter);
-
 // checkout
 const checkoutRouter = require('./routes/checkout');
 app.use('/checkout', checkoutRouter);

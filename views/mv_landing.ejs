@@ -1,0 +1,61 @@
+<%- include('mv_layout', { title: 'Multivendor Landing Page' }) %>
+
+<div class="container mt-4">
+  <h1>Welcome to the Multivendor NodeJS MV E-Shop</h1>
+  <p>This is the landing page of our multivendor e-shop.</p>
+  <% if (loggedIn) { %>
+    <h2>Products</h2>
+    <% products.forEach(product => { %>
+      <div class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="/pics/<%= product.image %>" class="img-fluid rounded-start" alt="<%= product.product_name %>">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title"><%= product.product_name %></h5>
+              <p class="card-text"><%= product.description %></p>
+              <p class="card-text"><strong>Price:</strong> <%= product.price %></p>
+              <p class="card-text"><strong>Stock:</strong> <%= product.stock %></p>
+              <% if ((userRole === 'vendor' && product.vendor_id.toString() === sessionVendorId) || userRole === 'admin') { %>
+                <!-- Options to edit and delete the product -->
+                <a href="/edit-product/<%= product._id %>" class="btn btn-primary me-2">Edit</a>
+                <form action="/delete-product/<%= product._id %>" method="POST" style="display: inline;">
+                  <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+              <% } else { %>
+                <!-- Option to add the product to cart -->
+                <form action="/add-to-cart/<%= product._id %>" method="POST" style="display: inline;">
+                  <button type="submit" class="btn btn-success">Add to Cart</button>
+                </form>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% }); %>
+  <% } else { %>
+    <h2>Products</h2>
+    <% products.forEach(product => { %>
+      <div class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="/pics/<%= product.image %>" class="img-fluid rounded-start" alt="<%= product.product_name %>">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title"><%= product.product_name %></h5>
+              <p class="card-text"><%= product.description %></p>
+              <p class="card-text"><strong>Price:</strong> <%= product.price %></p>
+              <p class="card-text"><strong>Stock:</strong> <%= product.stock %></p>
+              <!-- Option to add the product to cart -->
+              <form action="/add-to-cart/<%= product._id %>" method="POST" style="display: inline;">
+                <button type="submit" class="btn btn-success">Add to Cart</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% }); %>
+  <% } %>
+</div>

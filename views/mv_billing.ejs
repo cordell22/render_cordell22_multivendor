@@ -1,0 +1,41 @@
+<!-- mv_billing.ejs -->
+
+<h1>Billing Page</h1>
+<% if (user) { %>
+    <!-- Display user information -->
+    <p>User: <%= user.username %></p>
+    <p>Email: <%= user.email %></p>
+<% } %>
+
+<!-- Display cart information -->
+<h2>Cart</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% cart.items.forEach(item => { %>
+            <tr>
+                <td><%= item.product.product_name %></td>
+                <td><%= item.product.price %></td>
+                <td><%= item.quantity %></td>
+                <td><%= item.product.price * item.quantity %></td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<!-- Display total price -->
+<h3>Total: <%= total %></h3>
+
+<!-- Purchase confirmation form -->
+<form action="/confirm-purchase" method="POST">
+    <!-- Additional fields for user information if needed -->
+    <button type="submit">Confirm Purchase</button>
+</form>
+<a href="/show-cart">Go back to Cart</a>
