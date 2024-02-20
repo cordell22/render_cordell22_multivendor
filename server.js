@@ -9,6 +9,7 @@ const session = require('express-session');
 const methodOverride = require('method-override')
 const app = express()
 
+
 app.use(bodyParser.json()); // Parse JSON requests
 
 //	TODO: setup environment
@@ -85,6 +86,10 @@ const upload = multer({ storage: storage });
 
 // Serve static files from the "pics" directory
 app.use('/pics', express.static(path.join(__dirname, 'pics')));
+
+// Serve static files from the "public" directory
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 
 //	this shit worx
