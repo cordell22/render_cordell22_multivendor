@@ -148,6 +148,7 @@ router.get('/dashboard', ensureAdmin, dashController.dashboard);
 
 
 // Landing page route
+//  overwrite the controller for kungfuscience
 router.get('/', indexController.landingPage);
 
 
